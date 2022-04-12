@@ -1,0 +1,136 @@
+{
+    "name": "aquasec",
+    "description": "A Pulumi package for creating and managing aquasec cloud resources.",
+    "keywords": [
+        "pulumi",
+        "aquasec",
+        "category/cloud"
+    ],
+    "homepage": "https://www.pulumi.com",
+    "license": "Apache-2.0",
+    "attribution": "This Pulumi package is based on the [`aquasec` Terraform Provider](https://github.com/terraform-providers/terraform-provider-aquasec).",
+    "repository": "https://github.com/pulumi/pulumi-aquasec",
+    "publisher": "Pulumi",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "config": {
+        "variables": {
+            "aquaUrl": {
+                "type": "string",
+                "description": "This is the base URL of your Aqua instance. Can alternatively be sourced from the `AQUA_URL` environment variable.\n"
+            },
+            "caCertificatePath": {
+                "type": "string",
+                "description": "This is the file path for server CA certificates if they are not available on the host OS. Can alternatively be sourced\nfrom the `AQUA_CA_CERT_PATH` environment variable.\n"
+            },
+            "configPath": {
+                "type": "string",
+                "description": "This is the file path for Aqua provider configuration. The default configuration path is `~/.aqua/tf.config`. Can\nalternatively be sourced from the `AQUA_CONFIG` environment variable.\n"
+            },
+            "password": {
+                "type": "string",
+                "description": "This is the password that should be used to make the connection. Can alternatively be sourced from the `AQUA_PASSWORD`\nenvironment variable.\n"
+            },
+            "username": {
+                "type": "string",
+                "description": "This is the user id that should be used to make the connection. Can alternatively be sourced from the `AQUA_USER`\nenvironment variable.\n"
+            },
+            "verifyTls": {
+                "type": "boolean",
+                "description": "If true, server tls certificates will be verified by the client before making a connection. Defaults to true. Can\nalternatively be sourced from the `AQUA_TLS_VERIFY` environment variable.\n"
+            }
+        }
+    },
+    "provider": {
+        "description": "The provider type for the aquasec package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "properties": {
+            "aquaUrl": {
+                "type": "string",
+                "description": "This is the base URL of your Aqua instance. Can alternatively be sourced from the `AQUA_URL` environment variable.\n"
+            },
+            "caCertificatePath": {
+                "type": "string",
+                "description": "This is the file path for server CA certificates if they are not available on the host OS. Can alternatively be sourced\nfrom the `AQUA_CA_CERT_PATH` environment variable.\n"
+            },
+            "configPath": {
+                "type": "string",
+                "description": "This is the file path for Aqua provider configuration. The default configuration path is `~/.aqua/tf.config`. Can\nalternatively be sourced from the `AQUA_CONFIG` environment variable.\n"
+            },
+            "password": {
+                "type": "string",
+                "description": "This is the password that should be used to make the connection. Can alternatively be sourced from the `AQUA_PASSWORD`\nenvironment variable.\n"
+            },
+            "username": {
+                "type": "string",
+                "description": "This is the user id that should be used to make the connection. Can alternatively be sourced from the `AQUA_USER`\nenvironment variable.\n"
+            },
+            "verifyTls": {
+                "type": "boolean",
+                "description": "If true, server tls certificates will be verified by the client before making a connection. Defaults to true. Can\nalternatively be sourced from the `AQUA_TLS_VERIFY` environment variable.\n"
+            }
+        },
+        "inputProperties": {
+            "aquaUrl": {
+                "type": "string",
+                "description": "This is the base URL of your Aqua instance. Can alternatively be sourced from the `AQUA_URL` environment variable.\n"
+            },
+            "caCertificatePath": {
+                "type": "string",
+                "description": "This is the file path for server CA certificates if they are not available on the host OS. Can alternatively be sourced\nfrom the `AQUA_CA_CERT_PATH` environment variable.\n"
+            },
+            "configPath": {
+                "type": "string",
+                "description": "This is the file path for Aqua provider configuration. The default configuration path is `~/.aqua/tf.config`. Can\nalternatively be sourced from the `AQUA_CONFIG` environment variable.\n"
+            },
+            "password": {
+                "type": "string",
+                "description": "This is the password that should be used to make the connection. Can alternatively be sourced from the `AQUA_PASSWORD`\nenvironment variable.\n"
+            },
+            "username": {
+                "type": "string",
+                "description": "This is the user id that should be used to make the connection. Can alternatively be sourced from the `AQUA_USER`\nenvironment variable.\n"
+            },
+            "verifyTls": {
+                "type": "boolean",
+                "description": "If true, server tls certificates will be verified by the client before making a connection. Defaults to true. Can\nalternatively be sourced from the `AQUA_TLS_VERIFY` environment variable.\n"
+            }
+        }
+    },
+    "language": {
+        "csharp": {
+            "compatibility": "tfbridge20",
+            "namespaces": null,
+            "packageReferences": {
+                "Pulumi": "3.*"
+            }
+        },
+        "go": {
+            "generateExtraInputTypes": true,
+            "generateResourceContainerTypes": true,
+            "importBasePath": "github.com/pulumi/pulumi-aquasec/sdk/go/aquasec"
+        },
+        "nodejs": {
+            "compatibility": "tfbridge20",
+            "dependencies": {
+                "@pulumi/pulumi": "^3.0.0"
+            },
+            "devDependencies": {
+                "@types/mime": "^2.0.0",
+                "@types/node": "^10.0.0"
+            },
+            "disableUnionOutputTypes": true,
+            "packageDescription": "A Pulumi package for creating and managing aquasec cloud resources.",
+            "packageName": "",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-aquasec)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-aquasec` repo](https://github.com/pulumi/pulumi-aquasec/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-aquasec` repo](https://github.com/terraform-providers/terraform-provider-aquasec/issues).",
+            "typescriptVersion": ""
+        },
+        "python": {
+            "compatibility": "tfbridge20",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-aquasec)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-aquasec` repo](https://github.com/pulumi/pulumi-aquasec/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-aquasec` repo](https://github.com/terraform-providers/terraform-provider-aquasec/issues).",
+            "requires": {
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+            }
+        }
+    }
+}
