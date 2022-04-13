@@ -79,36 +79,64 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:   "https://www.pulumi.com",
 		Repository: "https://github.com/pulumi/pulumi-aquasec",
 		// The GitHub Org for the provider - defaults to `terraform-providers`
-		GitHubOrg: "",
-		Config:    map[string]*tfbridge.SchemaInfo{
-			// Add any required configuration here, or remove the example below if
-			// no additional points are required.
-			// "region": {
-			// 	Type: tfbridge.MakeType("region", "Region"),
-			// 	Default: &tfbridge.DefaultInfo{
-			// 		EnvVars: []string{"AWS_REGION", "AWS_DEFAULT_REGION"},
-			// 	},
-			// },
+		GitHubOrg: "aquasecurity",
+		Config: map[string]*tfbridge.SchemaInfo{
+			"username": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"AQUA_USERNAME"},
+				},
+			},
+			"password": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"AUQA_PASSWORD"},
+				},
+			},
+			"aqua_url": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"AQUA_URL"},
+				},
+			},
 		},
 		PreConfigureCallback: preConfigureCallback,
-		Resources:            map[string]*tfbridge.ResourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi type. Two examples
-			// are below - the single line form is the common case. The multi-line form is
-			// needed only if you wish to override types or other default options.
-			//
-			// "aws_iam_role": {Tok: tfbridge.MakeResource(mainMod, "IamRole")}
-			//
-			// "aws_acm_certificate": {
-			// 	Tok: tfbridge.MakeResource(mainMod, "Certificate"),
-			// 	Fields: map[string]*tfbridge.SchemaInfo{
-			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
-			// 	},
-			// },
+		Resources: map[string]*tfbridge.ResourceInfo{
+			"aquasec_application_scope":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ApplicationScope")},
+			"aquasec_container_runtime_policy":  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ContainerRuntimePolicy")},
+			"aquasec_enforcer_groups":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "EnforcerGroups")},
+			"aquasec_firewall_policy":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "FirewallPolicy")},
+			"aquasec_function_assurance_policy": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "FunctionAssurancePolicy")},
+			"aquasec_function_runtime_policy":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "FunctionRuntimePolicy")},
+			"aquasec_group":                     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Group")},
+			"aquasec_host_assurance_policy":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "HostAssurancePolicy")},
+			"aquasec_host_runtime_policy":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AquasecHostRuntimePolicy")},
+			"aquasec_image":                     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Image")},
+			"aquasec_image_assurance_policy":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ImageAssurancePolicy")},
+			"aquasec_integration_registry":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "IntegrationRegistry")},
+			"aquasec_notification_slack":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "NotificationSlack")},
+			"aquasec_permissions_sets":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PermissionsSets")},
+			"aquasec_role":                      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Role")},
+			"aquasec_service":                   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Service")},
+			"aquasec_user":                      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "User")},
+			"aquasec_user_saas":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "UserSaas")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi function. An example
-			// is below.
-			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainMod, "getAmi")},
+			"aquasec_application_scope":         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getApplicationScope")},
+			"aquasec_container_runtime_policy":  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getContainerRuntimePolicy")},
+			"aquasec_enforcer_groups":           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getEnforcerGroups")},
+			"aquasec_firewall_policy":           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getFirewallPolicy")},
+			"aquasec_function_assurance_policy": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getFunctionAssurancePolicy")},
+			"aquasec_function_runtime_policy":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getFunctionRuntimePolicy")},
+			"aquasec_gateways":                  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGateways")},
+			"aquasec_groups":                    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroups")},
+			"aquasec_host_assurance_policy":     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getHostAssurancePolicy")},
+			"aquasec_host_runtime_policy":       {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getHostRuntimePolicy")},
+			"aquasec_image":                     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getImage")},
+			"aquasec_image_assurance_policy":    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getImageAssurancePolicy")},
+			"aquasec_integration_registries":    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getIntegrationRegistries")},
+			"aquasec_permissions_sets":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getPermissionsSets")},
+			"aquasec_roles":                     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRoles")},
+			"aquasec_service":                   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getService")},
+			"aquasec_users":                     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUsers")},
+			"aquasec_users_saas":                {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUsersSaas")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
@@ -119,10 +147,6 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
 			},
-			// See the documentation for tfbridge.OverlayInfo for how to lay out this
-			// section, or refer to the AWS provider. Delete this section if there are
-			// no overlay files.
-			//Overlay: &tfbridge.OverlayInfo{},
 		},
 		Python: &tfbridge.PythonInfo{
 			// List any Python dependencies and their version ranges
